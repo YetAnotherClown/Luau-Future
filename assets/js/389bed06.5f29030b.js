@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[862],{63891:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/Clownxz/Future/blob/master","baseUrl":"/Future/","classOrder":[],"apiCategories":[]}')}}]);
