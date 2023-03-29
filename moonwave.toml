@@ -1,0 +1,23 @@
+title = "Future"
+
+[docusaurus]
+
+[[navbar.items]]
+href = "https://discord.gg/gMWmuaZEY6"
+label = "Discord"
+position = "right"
+
+[footer]
+style = "dark"
+copyright = "Copyright © 2023 Clownxz. Built with Moonwave and Docusaurus"
+
+[[footer.links]]
+title = "Links"
+
+[[footer.links.items]]
+label = "Clown's Circus Discord"
+href = "https://discord.gg/gMWmuaZEY6"
+
+[[footer.links.items]]
+label = "Clownxz on Github"
+href = "https://github.com/Clownxz"
