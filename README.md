@@ -77,8 +77,14 @@ local function exampleSystem(world)
         local future = future.future
 
         if future:isReady() then
-            local output = future:output()
-            -- Do something with output
+            local result = myFuture:output()
+
+            if result:ok() then
+                local returnedValues = result()
+                -- Do something
+            elseif result:error() then
+                warn(result())
+            end
 
             world:remove(id, Future)
         end

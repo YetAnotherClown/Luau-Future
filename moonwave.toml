@@ -1,6 +1,9 @@
-title = "Future"
+title = "Luau-Future"
+gitSourceBranch = "main"
 
 [docusaurus]
+url = "https://clownxz.github.io/"
+baseUrl = "/Luau-Future"
 
 [[navbar.items]]
 href = "https://discord.gg/gMWmuaZEY6"
