@@ -4,53 +4,16 @@
 	Future     1.0.0-beta1
 	A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
 
-	https://clownxz.github.io/Future/
+	https://clownxz.github.io/Luau-Future/
 ]]
+
+local Output = require(script.Output)
+type Output<T, E> = Output.Output<T, E>
 
 local ThreadPool = require(script.ThreadPool)
 type ThreadPool = ThreadPool.ThreadPool
 
 local threadPool = ThreadPool.new()
-
-local Output = {}
-Output.__index = Output
-
-function Output:__call<T>(): T?
-	if not self.results then
-		return nil
-	end
-
-	return table.unpack(self.results)
-end
-
-function Output:poll(): boolean
-	if not self.results then
-		return false
-	end
-
-	return true
-end
-
-function Output.new<T>(callback: (T) -> T, ...: T): Output<T>
-	local self = setmetatable({}, Output)
-
-	local _, results = xpcall(
-		function(...)
-			return { callback(...) }
-		end, 
-		function(err)
-			return { err }
-		end, ...
-	)
-
-	self.results = results :: {T}
-
-	return self
-end
-
-type Output<T> = typeof(setmetatable({
-	results = nil :: {T}?
-}, Output))
 
 --[=[
 	@class Future
@@ -89,9 +52,15 @@ type Output<T> = typeof(setmetatable({
 	To retrieve the Output of a Future, call ``output()`` on the Future when it is ready.
 	```lua
 	if myFuture:isReady() then
-		local a, b, c... = myFuture:output()
+		local result = myFuture:output()
 
-		-- Do something
+		if result:ok() then
+			local a, b, c... = result()
+
+			-- Do something
+		elseif result:error() then
+			warn(result())
+		end
 	end
 	```
 
@@ -105,7 +74,7 @@ type Output<T> = typeof(setmetatable({
 local Future = {}
 Future.__index = Future
 
-function Future:__call<T>(callback: (T) -> T, ...: T) : Future<T>
+function Future:__call<T, E>(callback: (T) -> T | E, ...: T) : Future<T, E>
 	local newFuture = setmetatable({}, Future)
 
 	threadPool:spawn(function(...)
@@ -148,8 +117,8 @@ end
     @return ...T?
 ]=]
 
-type Future<T> = typeof(setmetatable({
-	output = nil :: Output<T>?
+type Future<T, E> = typeof(setmetatable({
+	output = nil :: Output<T, E>?
 }, Future))
 
 return setmetatable({}, Future)

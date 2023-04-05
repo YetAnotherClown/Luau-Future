@@ -1,1 +1,1 @@
-{"name":"Future","className":"ModuleScript","filePaths":["lib\\init.lua","default.project.json"],"children":[{"name":"ThreadPool","className":"ModuleScript","filePaths":["lib\\ThreadPool.lua"]}]}
+{"name":"Future","className":"ModuleScript","filePaths":["lib\\init.lua","default.project.json"],"children":[{"name":"Output","className":"ModuleScript","filePaths":["lib\\Output.lua"]},{"name":"Result","className":"ModuleScript","filePaths":["lib\\Result.lua"]},{"name":"ThreadPool","className":"ModuleScript","filePaths":["lib\\ThreadPool.lua"]}]}
