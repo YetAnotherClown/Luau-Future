@@ -19,7 +19,7 @@ function Output:__call<T, E>(): Result<T, E>
 end
 
 function Output:poll(): boolean
-	if not self.results then
+	if not self.result then
 		return false
 	end
 
@@ -46,7 +46,7 @@ function Output.new<T, E>(callback: (T) -> T | E, ...: T): Output<T, E>
 end
 
 export type Output<T, E> = typeof(setmetatable({
-	results = Result.new("Ok", {}) :: Result<T, E>
+	result = Result.new("Ok", {}) :: Result<T, E>
 }, Output))
 
 return Output
