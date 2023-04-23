@@ -1,18 +1,18 @@
 --!strict
 
 --[[
-	Future     1.0.0-beta1
+	Future     1.0.0
 	A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
 
 	https://clownxz.github.io/Luau-Future/
 ]]
 
-local Packages = script.Parent
+local Package = script.Parent
 
 local Output = require(script.Output)
 type Output<T, E> = Output.Output<T, E>
 
-local ThreadPool = require(Packages.ThreadPool)
+local ThreadPool = require(Package.ThreadPool)
 type ThreadPool = ThreadPool.ThreadPool
 
 local threadPool = ThreadPool.new()
