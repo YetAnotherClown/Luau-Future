@@ -94,6 +94,16 @@ end
 
 ---
 
+### Installing with Wally
+
+```toml
+[dependencies]
+Future = "clownxz/future@1.0.0"
+```
+
+Note: Wally does not export types automatically and will display a type-error in one of the Dependencies.
+To fix this, see https://github.com/JohnnyMorganz/wally-package-types.
+
 ### Building with Rojo
 
 To build yourself, use: 

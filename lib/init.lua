@@ -7,10 +7,12 @@
 	https://clownxz.github.io/Luau-Future/
 ]]
 
+local Packages = script.Parent
+
 local Output = require(script.Output)
 type Output<T, E> = Output.Output<T, E>
 
-local ThreadPool = require(script.ThreadPool)
+local ThreadPool = require(Packages.ThreadPool)
 type ThreadPool = ThreadPool.ThreadPool
 
 local threadPool = ThreadPool.new()
