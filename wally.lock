@@ -3,11 +3,11 @@
 registry = "test"
 
 [[package]]
-name = "clownxz/future"
+name = "yetanotherclown/future"
 version = "1.0.0"
-dependencies = [["ThreadPool", "clownxz/threadpool@1.0.0"]]
+dependencies = [["ThreadPool", "yetanotherclown/threadpool@1.0.0"]]
 
 [[package]]
-name = "clownxz/threadpool"
+name = "yetanotherclown/threadpool"
 version = "1.0.0"
 dependencies = []

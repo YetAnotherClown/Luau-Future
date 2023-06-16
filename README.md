@@ -1,5 +1,5 @@
 # Future
-**[View Docs](https://clownxz.github.io/Luau-Future/)**
+**[View Docs](https://yetanotherclown.github.io/Luau-Future/)**
 
 > A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
 
@@ -31,7 +31,7 @@ I needed to represent dozens of values from asynchronous calls within a single f
 
 I built Luau Futures to be used within systems that run every frame, built for a library such as [Matter](https://github.com/evaera/matter), which had no built-in method for handling Asynchronous Calls.
 
-With minimal features and with use of my [ThreadPool](https://github.com/Clownxz/ThreadPool) library, I created a minimal and performant alternative to promises fit for my use case.
+With minimal features and with use of my [ThreadPool](https://github.com/YetAnotherClown/ThreadPool) library, I created a minimal and performant alternative to promises fit for my use case.
 
 ---
 
@@ -98,7 +98,7 @@ end
 
 ```toml
 [dependencies]
-Future = "clownxz/future@1.0.0"
+Future = "yetanotherclown/future@1.0.0"
 ```
 
 Note: Wally does not export types automatically and will display a type-error in one of the Dependencies.

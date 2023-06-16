@@ -1,13 +1,13 @@
 [package]
-name = "clownxz/future"
+name = "yetanotherclown/future"
 description = "A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem."
 version = "1.0.0"
 license = "MIT"
-authors = ["Clownxz"]
+authors = ["YetAnotherClown"]
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
 exclude = ["**"]
 include = ["lib", "lib/*", "default.project.json", "wally.toml", "wally.lock"]
 
 [dependencies]
-ThreadPool = "clownxz/threadpool@1.0.0"
+ThreadPool = "yetanotherclown/threadpool@1.0.0"

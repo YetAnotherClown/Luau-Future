@@ -4,7 +4,7 @@
 	Future     1.0.0
 	A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
 
-	https://clownxz.github.io/Luau-Future/
+	https://yetanotherclown.github.io/Luau-Future/
 ]]
 
 local Package = script.Parent
