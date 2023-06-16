@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
-<title data-rh="true">Future | Luau-Future</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://clownxz.github.io/Luau-Future/api/Future"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Future | Luau-Future"><meta data-rh="true" name="description" content="A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
+<title data-rh="true">Future | Luau-Future</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://yetanotherclown.github.io/Luau-Future/api/Future"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Future | Luau-Future"><meta data-rh="true" name="description" content="A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
 
 ### Creating a Future
 
@@ -105,9 +105,9 @@ It is important to Poll a Future first instead of just calling ``output()``!
 
 Your Future could no longer be Pending but not return anything, in which case
 ``output()`` will return ``nil``.
-:::"><link data-rh="true" rel="canonical" href="https://clownxz.github.io/Luau-Future/api/Future"><link data-rh="true" rel="alternate" href="https://clownxz.github.io/Luau-Future/api/Future" hreflang="en"><link data-rh="true" rel="alternate" href="https://clownxz.github.io/Luau-Future/api/Future" hreflang="x-default"><link rel="stylesheet" href="/Luau-Future/assets/css/styles.19a5646f.css">
-<link rel="preload" href="/Luau-Future/assets/js/runtime~main.b678d95f.js" as="script">
-<link rel="preload" href="/Luau-Future/assets/js/main.07bef220.js" as="script">
+:::"><link data-rh="true" rel="canonical" href="https://yetanotherclown.github.io/Luau-Future/api/Future"><link data-rh="true" rel="alternate" href="https://yetanotherclown.github.io/Luau-Future/api/Future" hreflang="en"><link data-rh="true" rel="alternate" href="https://yetanotherclown.github.io/Luau-Future/api/Future" hreflang="x-default"><link rel="stylesheet" href="/Luau-Future/assets/css/styles.19a5646f.css">
+<link rel="preload" href="/Luau-Future/assets/js/runtime~main.618a2f27.js" as="script">
+<link rel="preload" href="/Luau-Future/assets/js/main.fdbba97b.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -164,14 +164,14 @@ Your Future could no longer be Pending but not return anything, in which case
     </p>
   </div>
 </div>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isPending"><code style="text-decoration:none">isPending</code><a href="#isPending" class="hash-link" aria-label="Direct link to isPending" title="Direct link to isPending">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/init.lua#L95"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">isPending</code><code>(</code><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isPending"><code style="text-decoration:none">isPending</code><a href="#isPending" class="hash-link" aria-label="Direct link to isPending" title="Direct link to isPending">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/init.lua#L97"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">isPending</code><code>(</code><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
 <p>Polls the Future and returns <code>true</code> if the Future is pending.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isReady"><code style="text-decoration:none">isReady</code><a href="#isReady" class="hash-link" aria-label="Direct link to isReady" title="Direct link to isReady">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/init.lua#L107"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">isReady</code><code>(</code><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="isReady"><code style="text-decoration:none">isReady</code><a href="#isReady" class="hash-link" aria-label="Direct link to isReady" title="Direct link to isReady">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/init.lua#L109"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">isReady</code><code>(</code><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
 <p>Polls the Future and returns <code>true</code> if the Future is ready.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="output"><code style="text-decoration:none">output</code><a href="#output" class="hash-link" aria-label="Direct link to output" title="Direct link to output">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/init.lua#L119"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">output</code><code>(</code><code>) → </code><code class="blue_P4bS">...T?</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="output"><code style="text-decoration:none">output</code><a href="#output" class="hash-link" aria-label="Direct link to output" title="Direct link to output">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/init.lua#L121"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">output</code><code>(</code><code>) → </code><code class="blue_P4bS">...T?</code></div><div>
 <p>If the Future is ready, returns the results <code>...T</code>. Otherwise, returns <code>nil</code>.</p>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="output"><code style="text-decoration:none">output</code><a href="#output" class="hash-link" aria-label="Direct link to output" title="Direct link to output">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Clownxz/Luau-Future/blob/main/lib/Output.lua#L13"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Future<!-- -->:</code><code class="green_DgR4">output</code><code>(</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Luau-Future/api/Result">Result</a></code></div><div>
-<p>When the Result of the Future is ready, calling <code>output</code> will return a <a href="https://clownxz.github.io/Luau-Future/api/Result" target="_blank">Result</a>.</p>
+<p>When the Result of the Future is ready, calling <code>output</code> will return a <a href="https://yetanotherclown.github.io/Luau-Future/api/Result" target="_blank">Result</a>.</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
@@ -186,7 +186,7 @@ Your Future could no longer be Pending but not return anything, in which case
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 95,
+                &quot;line&quot;: 97,
                 &quot;path&quot;: &quot;lib/init.lua&quot;
             }
         },
@@ -202,7 +202,7 @@ Your Future could no longer be Pending but not return anything, in which case
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 107,
+                &quot;line&quot;: 109,
                 &quot;path&quot;: &quot;lib/init.lua&quot;
             }
         },
@@ -218,13 +218,13 @@ Your Future could no longer be Pending but not return anything, in which case
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 119,
+                &quot;line&quot;: 121,
                 &quot;path&quot;: &quot;lib/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;output&quot;,
-            &quot;desc&quot;: &quot;When the Result of the Future is ready, calling ``output`` will return a [Result](https://clownxz.github.io/Luau-Future/api/Result).&quot;,
+            &quot;desc&quot;: &quot;When the Result of the Future is ready, calling ``output`` will return a [Result](https://yetanotherclown.github.io/Luau-Future/api/Result).&quot;,
             &quot;params&quot;: [],
             &quot;returns&quot;: [
                 {
@@ -244,11 +244,11 @@ Your Future could no longer be Pending but not return anything, in which case
     &quot;name&quot;: &quot;Future&quot;,
     &quot;desc&quot;: &quot;A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.\n\n### Creating a Future\n\nTo create a Future, call the Library as a function and provide a yielding function as a parameter.\n```lua\nlocal Future = require(path.to.module)\n\nlocal myFuture = Future(function(...)\n\t-- Something that yields\nend, ...)\n```\n\n### Polling a Future\n\nTo check if a Future is ready with it&#x27;s results, you poll it! You can either call ``isReady()`` or ``isPending``\nto check whether or not the Future is ready.\n```lua\n-- Poll the Future to see if it is ready.\nif myFuture:isReady() then\n\t-- Do something\nend\n\n-- Poll the Future to see if it is pending.\nif myFuture:isPending() then\n\t-- Future is still pending!\nend\n```\n\n### Retrieving Output\n\nTo retrieve the Output of a Future, call ``output()`` on the Future when it is ready.\n```lua\nif myFuture:isReady() then\n\tlocal result = myFuture:output()\n\n\tif result:ok() then\n\t\tlocal a, b, c... = result()\n\n\t\t-- Do something\n\telseif result:error() then\n\t\twarn(result())\n\tend\nend\n```\n\n:::warning\nIt is important to Poll a Future first instead of just calling ``output()``!\n\nYour Future could no longer be Pending but not return anything, in which case\n``output()`` will return ``nil``.\n:::&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 74,
+        &quot;line&quot;: 76,
         &quot;path&quot;: &quot;lib/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#isPending" class="table-of-contents__link toc-highlight">:isPending</a></li><li><a href="#isReady" class="table-of-contents__link toc-highlight">:isReady</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">:output</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">:output</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Links</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/gMWmuaZEY6" target="_blank" rel="noopener noreferrer" class="footer__link-item">Clown&#x27;s Circus Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/Clownxz" target="_blank" rel="noopener noreferrer" class="footer__link-item">Clownxz on Github<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 Clownxz. Built with Moonwave and Docusaurus</div></div></div></footer></div>
-<script src="/Luau-Future/assets/js/runtime~main.b678d95f.js"></script>
-<script src="/Luau-Future/assets/js/main.07bef220.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#isPending" class="table-of-contents__link toc-highlight">:isPending</a></li><li><a href="#isReady" class="table-of-contents__link toc-highlight">:isReady</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">:output</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">:output</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Links</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/gMWmuaZEY6" target="_blank" rel="noopener noreferrer" class="footer__link-item">Clown&#x27;s Circus Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/YetAnotherClown" target="_blank" rel="noopener noreferrer" class="footer__link-item">YetAnotherClown on Github<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 YetAnotherClown. Built with Moonwave and Docusaurus</div></div></div></footer></div>
+<script src="/Luau-Future/assets/js/runtime~main.618a2f27.js"></script>
+<script src="/Luau-Future/assets/js/main.fdbba97b.js"></script>
 </body>
 </html>
