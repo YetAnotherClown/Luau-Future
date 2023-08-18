@@ -6,20 +6,27 @@
 
 ## Luau Futures
 
-Futures represent a value that does not exist quite yet, similar to Promises. This makes
-Futures or Promises perfect to use when handling asynchronous calls.
+Futures are a Data-Driven approach to asynchronous calls, what this means is that Futures
+represent a value that does not exist quite yet, similar to Promises.
+
+Unlike Promises, Futures take on a Data-Driven approach as opposed to a Event-Driven approach.
+Futures have no events for you to react to, there is no `andThen` or any other event-like methods
+or functions for Futures. 
+
+In order to use Futures, you must do something called polling, you can call `isReady` to see if the
+future has a result ready, and then you can call `output` to receive a result.
+The future can either be ok or an error, you can use the `ok` and `error` methods respectively to check.
+To get the value `T` or `Error` you can call the result as a function.
 
 ---
 
 ### Why use this?
 
 Don't. Use Promises. You shouldn't need to use this and shouldn't unless it fits a certain use case.
-
 Promises have Chaining, Joining, Cancellation, and many more features that Futures don't have.
 
-Futures are simply
-built to be performant, unlike Promises. Even then, the performance gains you may see will be so insignificant
-you'd only be hurting yourself by using Futures.
+Futures are simply a lightweight alternative to Promises that uses long polling. Any gains you may get from
+using Futures will be so insignificant you'd only be hurting yourself by using them in most cases.
 
 > See [Roblox Lua Promise](https://eryn.io/roblox-lua-promise/)
 > and [Why Use Promises?](https://eryn.io/roblox-lua-promise/docs/WhyUsePromises) by Evaera
@@ -27,11 +34,12 @@ you'd only be hurting yourself by using Futures.
 
 ### Why I use Luau Futures
 
-I needed to represent dozens of values from asynchronous calls within a single frame, each frame. Promises proved to not be performant and full of unnecessary features I had no need of, this is where Luau Futures comes in.
+When writing code that ran every frame I found myself needing to represent yielding asynchronous calls in a way where
+I could store the future value and use it in a future frame. Promises felt like a good first step, but it just felt like
+they did not fit the Data-Driven architecture I was going for, with Promises being Event-Driven.
 
-I built Luau Futures to be used within systems that run every frame, built for a library such as [Matter](https://github.com/evaera/matter), which had no built-in method for handling Asynchronous Calls.
-
-With minimal features and with use of my [ThreadPool](https://github.com/YetAnotherClown/ThreadPool) library, I created a minimal and performant alternative to promises fit for my use case.
+So here comes Luau Futures, a Data-Driven Approach to handling asynchronous code,
+built for a library such as [Matter](https://github.com/evaera/matter), which had no built-in method for handling Asynchronous Calls.
 
 ---
 
@@ -47,7 +55,8 @@ end, ...)
 
 -- Poll the Future to see if it is ready.
 if myFuture:isReady() then
-    local ... = myFuture:output()
+    local result = myFuture:output()
+    local ... = result()
     
     -- Do something
 end

@@ -110,15 +110,6 @@ function Future:isReady(): boolean
 	return self.output and self.output:poll() or false
 end
 
---[=[
-    @method output
-    @within Future
-    
-    If the Future is ready, returns the results ``...T``. Otherwise, returns ``nil``.
-    
-    @return ...T?
-]=]
-
 type Future<T, E> = typeof(setmetatable({
 	output = nil :: Output<T, E>?
 }, Future))
