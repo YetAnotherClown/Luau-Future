@@ -1,6 +1,10 @@
+/.vscode
+/build
+/Packages
+
 /*.rbxlx.lock
 /*.rbxl.lock
 /*.rbxm
-/build
-/Packages
+
 sourcemap.json
+wally.lock
