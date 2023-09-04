@@ -1,7 +1,7 @@
 --!strict
 
 --[[
-	Future     1.0.0
+	Future     1.1.0
 	A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
 
 	https://yetanotherclown.github.io/Luau-Future/
@@ -76,7 +76,7 @@ local threadPool = ThreadPool.new()
 local Future = {}
 Future.__index = Future
 
-function Future:__call<T, E>(callback: (T) -> T | E, ...: T) : Future<T, E>
+function Future:__call<T, E>(callback: (T) -> T | E, ...: T): Future<T, E>
 	return self.new(callback) :: Future<T, E>
 end
 
@@ -112,7 +112,7 @@ end
 
 	@return Future
 ]=]
-function Future.new<T, E>(callback: (T) -> T | E, ...: T) : Future<T, E>
+function Future.new<T, E>(callback: (T) -> T | E, ...: T): Future<T, E>
 	local newFuture = setmetatable({}, Future)
 
 	threadPool:spawn(function(...)
@@ -123,7 +123,7 @@ function Future.new<T, E>(callback: (T) -> T | E, ...: T) : Future<T, E>
 end
 
 type Future<T, E> = typeof(setmetatable({
-	output = nil :: Output<T, E>?
+	output = nil :: Output<T, E>?,
 }, Future))
 
 return setmetatable({}, Future)
