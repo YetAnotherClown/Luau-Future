@@ -5,16 +5,17 @@
 
 	### Checking the Result
 
-	You can retrieve either the Returned Values (as a tuple), or the Error Message (as a string) by calling the result as a function.
+	You can retrieve either the Returned Values (as a tuple), or the Error Message (as a string)
+	by using the ``unwrap`` method or by calling the result as a function.
 	```lua
 	local result = myFuture:output()
 
 	if result:ok() then
-		local returnedValues = result()
+		local returnedValues = result:unwrap()
 
 		-- Do something
 	elseif result:error() then
-		warn(result())
+		warn(result:unwrap())
 	end
 	```
 ]=]
@@ -23,11 +24,7 @@ local Result = {}
 Result.__index = Result
 
 function Result:__call<T, E>(): (T | E)?
-	if not self.enumValue then
-		return nil
-	end
-
-	return table.unpack(self.enumValue)
+	return self:unwrap() :: (T | E)?
 end
 
 --[=[
@@ -60,6 +57,22 @@ function Result:error(): boolean
 	end
 
 	return true
+end
+
+--[=[
+	@method unwrap
+	@within Result
+
+	Returns the stored values within the result as a tuple or an error (as a string).
+
+	@return (T | E)?
+]=]
+function Result:unwrap<T, E>(): (T | E)?
+	if not self.enumValue then
+		return nil
+	end
+
+	return table.unpack(self.enumValue)
 end
 
 function Result.new<T, E>(enumType: "Ok" | "Error", results: T | E): Result<T, E>

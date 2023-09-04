@@ -16,7 +16,7 @@ or functions for Futures.
 In order to use Futures, you must do something called polling, you can call `isReady` to see if the
 future has a result ready, and then you can call `output` to receive a result.
 The future can either be ok or an error, you can use the `ok` and `error` methods respectively to check.
-To get the value `T` or `Error` you can call the result as a function.
+To get the value `T` or `Error` you can call the `unwrap` method on the result.
 
 ---
 
@@ -54,15 +54,18 @@ local myFuture = Future.new(function(...)
 end, ...)
 
 -- Poll the Future to see if it is ready.
-if myFuture:isReady() then
+if future:isReady() then
     local result = myFuture:output()
-    local ... = result()
-    
-    -- Do something
-end
 
--- Poll the Future to see if it is still pending.
-if myFuture:isPending() then
+    if result:ok() then
+        local returnedValues = result:unwrap()
+        -- Do something
+    elseif result:error() then
+        warn(result:unwrap())
+    end
+elseif myFuture:isPending() then
+    -- Poll the Future to see if it is still pending.
+
     warn("Future is still pending!")
 end
 ```
@@ -89,10 +92,10 @@ local function exampleSystem(world)
             local result = myFuture:output()
 
             if result:ok() then
-                local returnedValues = result()
+                local returnedValues = result:unwrap()
                 -- Do something
             elseif result:error() then
-                warn(result())
+                warn(result:unwrap())
             end
 
             world:remove(id, Future)

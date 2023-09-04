@@ -57,11 +57,11 @@ local threadPool = ThreadPool.new()
 		local result = myFuture:output()
 
 		if result:ok() then
-			local a, b, c... = result()
+			local a, b, c... = result:unwrap()
 
 			-- Do something
 		elseif result:error() then
-			warn(result())
+			warn(result:unwrap())
 		end
 	end
 	```
