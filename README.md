@@ -49,7 +49,7 @@ built for a library such as [Matter](https://github.com/evaera/matter), which ha
 local Future = require(path.to.module)
 
 -- Create a future
-local myFuture = Future(function(...)
+local myFuture = Future.new(function(...)
     -- Something that yields
 end, ...)
 
@@ -75,7 +75,7 @@ local function exampleSystem(world)
     -- Create Futures
     for id in world:query():without(Future) do
         world:insert(id, Future {
-            future = Future(function()
+            future = Future.new(function()
                 -- Something that yields
             end)
         })

@@ -24,11 +24,11 @@ local threadPool = ThreadPool.new()
 
 	### Creating a Future
 
-	To create a Future, call the Library as a function and provide a yielding function as a parameter.
+	To create a Future, use the ``new`` function or call the Library as a function and provide a yielding function as a parameter.
 	```lua
 	local Future = require(path.to.module)
 	
-	local myFuture = Future(function(...)
+	local myFuture = Future.new(function(...)
 		-- Something that yields
 	end, ...)
 	```
@@ -77,13 +77,7 @@ local Future = {}
 Future.__index = Future
 
 function Future:__call<T, E>(callback: (T) -> T | E, ...: T) : Future<T, E>
-	local newFuture = setmetatable({}, Future)
-
-	threadPool:spawn(function(...)
-		newFuture.output = Output.new(callback, ...)
-	end, ...)
-
-	return newFuture
+	return self.new(callback) :: Future<T, E>
 end
 
 --[=[
@@ -108,6 +102,24 @@ end
 ]=]
 function Future:isReady(): boolean
 	return self.output and self.output:poll() or false
+end
+
+--[=[
+	@function new
+	@within Future
+
+	Creates a new future from the provided callback.
+
+	@return Future
+]=]
+function Future.new<T, E>(callback: (T) -> T | E, ...: T) : Future<T, E>
+	local newFuture = setmetatable({}, Future)
+
+	threadPool:spawn(function(...)
+		newFuture.output = Output.new(callback, ...)
+	end, ...)
+
+	return newFuture
 end
 
 type Future<T, E> = typeof(setmetatable({
