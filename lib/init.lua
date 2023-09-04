@@ -35,8 +35,8 @@ local threadPool = ThreadPool.new()
 
 	### Polling a Future
 
-	To check if a Future is ready with it's results, you poll it! You can either call ``isReady()`` or ``isPending``
-	to check whether or not the Future is ready.
+	To check if a Future is ready with it's results, you poll it! You can either call the ``isReady()``
+	or ``isPending`` methods to check whether or not the Future is ready.
 	```lua
 	-- Poll the Future to see if it is ready.
 	if myFuture:isReady() then
@@ -51,7 +51,7 @@ local threadPool = ThreadPool.new()
 
 	### Retrieving Output
 
-	To retrieve the Output of a Future, call ``output()`` on the Future when it is ready.
+	To retrieve the Output of a Future, call the ``output()`` method on the Future when it is ready.
 	```lua
 	if myFuture:isReady() then
 		local result = myFuture:output()

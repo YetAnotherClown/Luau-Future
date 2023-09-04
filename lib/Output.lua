@@ -6,7 +6,7 @@ type Result<T, E> = Result.Result<T, E>
     @method output
     @within Future
     
-    When the Result of the Future is ready, calling ``output`` will return a [Result](https://yetanotherclown.github.io/Luau-Future/api/Result).
+    When the Result of the Future is ready, calling the ``output`` method will return a [Result](https://yetanotherclown.github.io/Luau-Future/api/Result).
     
     @return Result
 ]=]

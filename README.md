@@ -13,8 +13,8 @@ Unlike Promises, Futures take on a Data-Driven approach as opposed to a Event-Dr
 Futures have no events for you to react to, there is no `andThen` or any other event-like methods
 or functions for Futures. 
 
-In order to use Futures, you must do something called polling, you can call `isReady` to see if the
-future has a result ready, and then you can call `output` to receive a result.
+In order to use Futures, you must do something called polling, you can call the `isReady` method to see if the
+future has a result ready, and then you can call the `output` method to receive a result.
 The future can either be ok or an error, you can use the `ok` and `error` methods respectively to check.
 To get the value `T` or `Error` you can call the `unwrap` method on the result.
 
@@ -63,6 +63,7 @@ if future:isReady() then
     elseif result:error() then
         warn(result:unwrap())
     end
+
 elseif myFuture:isPending() then
     -- Poll the Future to see if it is still pending.
 
@@ -76,8 +77,8 @@ In a [Matter](https://github.com/evaera/matter) System:
 local function exampleSystem(world)
 
     -- Create Futures
-    for id in world:query():without(Future) do
-        world:insert(id, Future {
+    for id in world:query():without(FutureComponent) do
+        world:insert(id, FutureComponent {
             future = Future.new(function()
                 -- Something that yields
             end)
@@ -85,7 +86,7 @@ local function exampleSystem(world)
     end
 
     -- Poll Futures
-    for id, future in world:query(Future) do
+    for id, future in world:query(FutureComponent) do
         local future = future.future
 
         if future:isReady() then
@@ -98,7 +99,7 @@ local function exampleSystem(world)
                 warn(result:unwrap())
             end
 
-            world:remove(id, Future)
+            world:remove(id, FutureComponent)
         end
     end
 end
