@@ -122,7 +122,7 @@ function Future.new<T, E>(callback: (T) -> T | E, ...: T): Future<T, E>
 	return newFuture
 end
 
-type Future<T, E> = typeof(setmetatable({
+export type Future<T, E> = typeof(setmetatable({
 	output = nil :: Output<T, E>?,
 }, Future))
 
