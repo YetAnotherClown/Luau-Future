@@ -1,127 +1,135 @@
-# Future
-**[View Docs](https://yetanotherclown.github.io/Luau-Future/)**
+# Luau Futures
 
-> A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem.
+[**View Documentation**](https://yetanotherclown.github.io/luau-future)
 
+Futures represent a read-only asynchronous value, one that may not have
+finished computation like.
 
-## Luau Futures
+This design is inspired by the Futures crate in Rust.
 
-Futures are a Data-Driven approach to asynchronous calls, what this means is that Futures
-represent a value that does not exist quite yet, similar to Promises.
+> [!IMPORTANT]
+> After almost two years of being the oldest Futures implementation on Wally,
+> Luau Futures v2.0.0 has released, with several key changes.
+>
+> Importantly, the Wally scope has been changed to `yetanotherclown/luau-futures`.
+> If you are still using the v1.x.x Future library make sure to update your `wally.toml` to upgrade.
+>
+> You can find out more [here](https://github.com/YetAnotherClown/luau-futures/releases/tag/v2.0.0).
 
-Unlike Promises, Futures take on a Data-Driven approach as opposed to a Event-Driven approach.
-Futures have no events for you to react to, there is no `andThen` or any other event-like methods
-or functions for Futures. 
+## Basic Use
 
-In order to use Futures, you must do something called polling, you can call the `isReady` method to see if the
-future has a result ready, and then you can call the `output` method to receive a result.
-The future can either be ok or an error, you can use the `ok` and `error` methods respectively to check.
-To get the value `T` or `Error` you can call the `unwrap` method on the result.
+Creating a future is very simple:
 
----
+```luau
+local Futures = require("@packages/LuauFutures")
+local Future = Futures.Future
 
-### Why use this?
+local myFuture = Future.new(function()
+    yield()
+    return 1, 2, 3
+end)
 
-Don't. Use Promises. You shouldn't need to use this and shouldn't unless it fits a certain use case.
-Promises have Chaining, Joining, Cancellation, and many more features that Futures don't have.
+```
 
-Futures are simply a lightweight alternative to Promises that uses long polling. Any gains you may get from
-using Futures will be so insignificant you'd only be hurting yourself by using them in most cases.
+When you create a future, it wont begin execution until it is either polled or awaited.
 
-> See [Roblox Lua Promise](https://eryn.io/roblox-lua-promise/)
-> and [Why Use Promises?](https://eryn.io/roblox-lua-promise/docs/WhyUsePromises) by Evaera
+Polling will advance the future to it's next resumption point every time that it is called, returning a [Poll](https://yetanotherclown.github.io/luau-future/api/Poll) to let you check the status of the future.
 
+If the Poll is ready, you can also unwrap it to get the [Result](https://yetanotherclown.github.io/luau-future/api/Result)
 
-### Why I use Luau Futures
-
-When writing code that ran every frame I found myself needing to represent yielding asynchronous calls in a way where
-I could store the future value and use it in a future frame. Promises felt like a good first step, but it just felt like
-they did not fit the Data-Driven architecture I was going for, with Promises being Event-Driven.
-
-So here comes Luau Futures, a Data-Driven Approach to handling asynchronous code,
-built for a library such as [Matter](https://github.com/evaera/matter), which had no built-in method for handling Asynchronous Calls.
-
----
-
-### Basic Usage
-
-```lua
-local Future = require(path.to.module)
-
--- Create a future
-local myFuture = Future.new(function(...)
-    -- Something that yields
-end, ...)
-
--- Poll the Future to see if it is ready.
-if future:isReady() then
-    local result = myFuture:output()
-
-    if result:ok() then
-        local returnedValues = result:unwrap()
-        -- Do something
-    elseif result:error() then
-        warn(result:unwrap())
-    end
-
-elseif myFuture:isPending() then
-    -- Poll the Future to see if it is still pending.
-
-    warn("Future is still pending!")
+```luau
+local poll = myFuture:poll()
+if poll:isReady() then
+    local result = poll:unwrap()
+    -- Handle result
 end
 ```
 
-In a [Matter](https://github.com/evaera/matter) System:
-```lua
--- Basic concept of Futures in a Matter System
-local function exampleSystem(world)
+Awaiting a future will yield the current thread until the future finishes execution. As such, it is recommended that you only use the await method within other futures, preferring to use poll instead.
 
-    -- Create Futures
-    for id in world:query():without(FutureComponent) do
-        world:insert(id, FutureComponent {
-            future = Future.new(function()
-                -- Something that yields
-            end)
-        })
-    end
+```luau
+local result = myFuture:await()
+-- Handle result
+```
 
-    -- Poll Futures
-    for id, future in world:query(FutureComponent) do
-        local future = future.future
+To read the result, you can use [Result:isOk](https://yetanotherclown.github.io/luau-future/api/Result#isOk) or [Result:isErr](https://yetanotherclown.github.io/luau-future/api/Result#isOk) to check what type the Result is.
 
-        if future:isReady() then
-            local result = myFuture:output()
+You can then use [Result:unwrapOk](https://yetanotherclown.github.io/luau-future/api/Result#unwrapOk) or [Result:unwrapErr](https://yetanotherclown.github.io/luau-future/api/Result#unwrapErr) to get the value of the result.
 
-            if result:ok() then
-                local returnedValues = result:unwrap()
-                -- Do something
-            elseif result:error() then
-                warn(result:unwrap())
-            end
-
-            world:remove(id, FutureComponent)
-        end
-    end
+```luau
+if result:isOk() then
+    print(result:unwrapOk()) -- 1, 2, 3
+elseif result:isErr() then
+    warn(result:unwrapErr()) -- An error occurred
 end
 ```
 
----
+There are also several other methods for chaining, combining, and mapping futures, as well as other utilities for working with futures.
 
-### Installing with Wally
+It is suggested to read the [API Documentation](https://yetanotherclown.github.io/luau-future) for more information about these methods.
 
-```toml
-[dependencies]
-Future = "yetanotherclown/future@1.1.0"
+## Why Luau Futures
+
+### Laziness
+
+Like in Rust, Luau Future is lazy. Unlike Promises which are eager.
+
+Futures will not begin execution until polled or awaited, where as in Promises, execution is begun immediately or scheduled to be done as soon as it can.
+
+Polling will execute until the next suspension point, until execution is finished. By awaiting a Future, it will yield the current thread until execution has completed.
+
+## Why you Shouldn't Use Luau Futures
+
+### Futures are Lazy
+
+Sometimes, you might not want the Laziness of Futures, and instead want execution to begin when it can. Promises begin execution as soon as they're made,
+allowing the result to be completed much sooner than with a Future. Futures are lazy by design, you might find that you want this laziness for a certain
+purpose and that is fine, but sometimes you might not.
+
+### Promises Just Work
+
+roblox-lua-promise works, and has worked for some time now. Do you need a battle tested strategy for asynchronous programming? Use roblox-lua-promise!
+If you're already using Promises, keep using them.
+
+### Promises are more Common
+
+Working on a library? Introducing new developers to your team? It would be easier for them to understand Promises, as they're already widely popular in
+the JavaScript ecosystem as well as in Luau.
+
+## A Note on Typechecking
+
+The following typechecking restrictions should be resolved in the Luau Solver V2, in which recursive type restrictions
+should be loosened.
+
+### Exported Types
+
+The Futures library exports two types because of these restrictions. `FutureLike` should be used when your being given a future, such as in a function with a future as a parameter. The `Future` type should be used when returning a future, such as in a function return.
+
+```luau
+function Class:method<E, U...>(future: Futures.FutureLike<E, U...>): Futures.Future<E, U...>
+    return future:andThen(function(...)
+        -- ...
+    end) :: any
+end
 ```
 
-Note: Wally does not export types automatically and will display a type-error in one of the Dependencies.
-To fix this, see https://github.com/JohnnyMorganz/wally-package-types.
+> [!NOTE]
+> To avoid recursive type restrictions, there are internally multiple types like FutureFirst, FutureNext, FutureLast and FutureExhausted.
+>
+> The Futures.Future type is just FutureFirst, so when you use that type it will expect a FutureFirst which is the first type you get when creating a future with Future.new().
+>
+> If you are chaining a future in a function that returns one, you can annotate the return type to be Futures.Future and then typecast the returned future with :: any like in the example.
 
-### Building with Rojo
+### Recursive Types
 
-To build yourself, use: 
-```bash
-rojo build -o "Future.rbxm"
-```
+Some methods, such as `andThen`, `mapOk`, `mapErr`, etc. will return a recursive type with different parameters.
+Currently, there are restrictions in place in the Luau type solver to prevent this. The Futures library has a workaround
+to allow you to chain up to 3 of these methods. When you hit the limit, you will be returned a generic
+Future that is typed as `Future<any, ...any>`.
 
-For more help, check out [the Rojo documentation](https://rojo.space/docs).
+### Join Methods
+
+The Join methods currently will always return a generic Future. Currently, it is impossible to type these methods.
+
+### UnwrapOrElse
+[Future:unwrapOrElse](https://yetanotherclown.github.io/luau-future/api/Future#unwrapOrElse) should return the type `Future<never, U...>`. However, due to recursive type restrictions, it will return `Future<E, U...>`.
