@@ -24,7 +24,7 @@ This design is inspired by the Futures crate in Rust.
 Creating a future is very simple:
 
 ```luau
-local Futures = require("@packages/LuauFutures")
+local Futures = require("@packages/Futures")
 local Future = Futures.Future
 
 local myFuture = Future.new(function()
