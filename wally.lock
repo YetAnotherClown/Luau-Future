@@ -239,5 +239,5 @@ dependencies = [["collections", "jsdotlua/collections@1.2.7"]]
 
 [[package]]
 name = "yetanotherclown/luau-futures"
-version = "2.0.0"
+version = "2.0.0-beta.1"
 dependencies = [["Jest", "jsdotlua/jest@3.6.1-rc.2"], ["JestGlobals", "jsdotlua/jest-globals@3.6.1-rc.2"]]

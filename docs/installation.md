@@ -14,7 +14,7 @@ being used internally for development.
 
 ```toml
 [dependencies]
-Futures = "yetanotherclown/luau-futures@^2.0.0"
+Futures = "yetanotherclown/luau-futures@^2.0.0-beta.1"
 ```
 
 :::note
@@ -27,7 +27,7 @@ To fix this, see https://github.com/JohnnyMorganz/wally-package-types.
 
 ```toml
 [dependencies]
-Futures = { name = "yetanotherclown/luau_futures", version = "^2.0.0", target = "luau" }
+Futures = { name = "yetanotherclown/luau_futures", version = "^2.0.0-beta.1", target = "luau" }
 ```
 
 Or, you can run `pesde add yetanotherclown/luau_futures --target luau --alias Futures`.

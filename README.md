@@ -17,7 +17,7 @@ This design is inspired by the Futures crate in Rust.
 > Importantly, the Wally scope has been changed to `yetanotherclown/luau-futures`.
 > If you are still using the v1.x.x Future library make sure to update your `wally.toml` to upgrade.
 >
-> You can find out more [here](https://github.com/YetAnotherClown/luau-futures/releases/tag/v2.0.0).
+> You can find out more [here](https://github.com/YetAnotherClown/luau-futures/releases/latest).
 
 ## Basic Use
 
