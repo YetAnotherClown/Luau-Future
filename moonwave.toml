@@ -1,26 +1,16 @@
-title = "Luau-Future"
-gitSourceBranch = "main"
+title = "Luau Futures"
 
 [docusaurus]
-url = "https://yetanotherclown.github.io/"
-baseUrl = "/Luau-Future"
+tagline = "Rust-like futures for Luau"
 
-[[navbar.items]]
-href = "https://discord.gg/gMWmuaZEY6"
-label = "Discord"
-position = "right"
+[home]
+enabled = true
 
 [footer]
-style = "dark"
-copyright = "Copyright © 2023 YetAnotherClown. Built with Moonwave and Docusaurus"
+copyright = "Copyright © 2024 YetAnotherClown. Built with Moonwave and Docusaurus"
 
-[[footer.links]]
-title = "Links"
-
-[[footer.links.items]]
-label = "Clown's Circus Discord"
-href = "https://discord.gg/gMWmuaZEY6"
-
-[[footer.links.items]]
-label = "YetAnotherClown on Github"
-href = "https://github.com/YetAnotherClown"
+[[navbar.items]]
+title = "Discord"
+href = "https://discord.gg/nKCV5fjEvH"
+position = "right"
+className = "discord-logo-link"

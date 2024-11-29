@@ -9,13 +9,13 @@
 			"Packages": {
 				"$className": "Folder",
 				"Project": {
-					"$path": "src"
+					"$path": "dist/src"
 				}
 			}
 		},
 		"ServerScriptService": {
 			"run-tests": {
-				"$path": "scripts/run-tests.server.luau"
+				"$path": "dist/run-tests.server.luau"
 			}
 		}
 	}

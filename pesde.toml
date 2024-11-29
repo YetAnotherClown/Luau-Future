@@ -1,0 +1,21 @@
+name = "yetanotherclown/luau_futures"
+version = "0.1.0"
+description = "Rust-like futures for Luau"
+authors = ["YetAnotherClown"]
+repository = "https://github.com/YetAnotherClown/luau-futures"
+license = "MIT"
+includes = [
+    "!src/__*__",
+    "!src/__*__/*",
+    "!src/jest.config.luau",
+    "src",
+    "pesde.lock",
+]
+
+[target]
+environment = "luau"
+lib = "src/init.luau"
+build_files = ["src"]
+
+[indices]
+default = "https://github.com/daimond113/pesde-index"

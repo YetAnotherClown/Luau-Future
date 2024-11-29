@@ -1,13 +1,24 @@
 [package]
-name = "yetanotherclown/future"
-description = "A Minimal, Typed Future Implementation inspired by the concept of Futures from the Rust Ecosystem."
-version = "1.1.0"
+name = "yetanotherclown/luau-futures"
+description = "Rust-like futures for Luau"
+version = "2.0.0"
 license = "MIT"
 authors = ["YetAnotherClown"]
-realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
-exclude = ["**"]
-include = ["lib", "lib/*", "default.project.json", "wally.toml", "wally.lock"]
+realm = "shared"
 
-[dependencies]
-ThreadPool = "yetanotherclown/threadpool@1.0.0"
+# publish-wally.sh will clone to /dist and run wally publish in that directory
+exclude = [
+    "tests",
+    "tests/*",
+    "src/__*__",
+    "src/__*__/*",
+    "package.json",
+    "*.tgz",
+    "*.zip",
+]
+include = ["wally.lock"]
+
+[dev-dependencies]
+Jest = "jsdotlua/jest@3.6.1-rc.2"
+JestGlobals = "jsdotlua/jest-globals@3.6.1-rc.2"
