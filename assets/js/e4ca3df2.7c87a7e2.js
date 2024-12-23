@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[399],{4410:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/YetAnotherClown/luau-futures/blob/master","baseUrl":"/luau-futures/","classOrder":[],"apiCategories":[]}')}}]);
