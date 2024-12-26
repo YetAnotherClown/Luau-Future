@@ -279,12 +279,10 @@ function Future:poll()
 	local threadExists = self.thread ~= nil
 
 	if not threadExists then
-		debug.profilebegin("Create Thread")
 		local thread = coroutine.create(function(...)
 			local success, result = xpcall(function(...)
 				local results = { self._callback(...) }
 
-				debug.profilebegin("Handle OK")
 				for _, command in self._onCompletion do
 					if command.on == "Err" then
 						continue
@@ -296,11 +294,9 @@ function Future:poll()
 						command.fn(table.unpack(results))
 					end
 				end
-				debug.profileend()
 
 				return results
 			end, function(err)
-				debug.profilebegin("Handle ERR")
 				for _, command in self._onCompletion do
 					if command.on == "Ok" then
 						continue
@@ -312,7 +308,6 @@ function Future:poll()
 						command.fn(err)
 					end
 				end
-				debug.profileend()
 
 				return err
 			end, ...)
@@ -337,7 +332,6 @@ function Future:poll()
 
 		self.thread = thread
 		coroutine.resume(thread, table.unpack(self._arguments))
-		debug.profileend()
 	end
 
 	local ready = if self._threadStatus then true else false
