@@ -33,9 +33,9 @@ const FEATURES = [
 			<>
 				Luau Futures are strictly typed, within the type solver's restrictions.
 				<div class="card__footer">
-					<a class="button button--outline button--secondary button--block" href="/docs/typechecking">
+					<Link class="button button--outline button--secondary button--block" to="/docs/typechecking">
 						Typechecking Guide
-					</a>
+					</Link>
 				</div>
 			</>
 		),
@@ -84,16 +84,16 @@ function HeroBanner() {
 					{siteConfig.tagline}
 				</p>
 				<div>
-					<a class="button button--secondary button--lg" style={{ marginRight: "1rem" }} href="/docs/intro">
+					<Link class="button button--secondary button--lg" style={{ marginRight: "1rem" }} to="/docs/intro">
 						<span class={styles["hero-button-text"]}>Get Started</span>
-					</a>
-					<a
+					</Link>
+					<Link
 						class="button button--outline button--secondary button--lg hero-button"
 						style={{ marginRight: "1rem" }}
-						href="/api"
+						to="/api"
 					>
 						<span class={styles["hero-button-text"]}>API</span>
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>
