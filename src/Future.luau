@@ -349,7 +349,7 @@ function Future:poll()
 	end
 end
 
---- @method new
+--- @function new
 --- @within Future
 --- @param callback (T...) -> U...
 --- @param ... T...
