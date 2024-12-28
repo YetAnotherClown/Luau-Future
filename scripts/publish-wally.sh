@@ -3,6 +3,8 @@
 set -e
 
 rojo sourcemap default.project.json -o sourcemap.json
+
+rm -rf dist
 darklua process --config .darklua.json src/ dist/src
 
 cp README.md dist/README.md
