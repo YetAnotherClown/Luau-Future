@@ -5,7 +5,6 @@
     "luau-lsp.completion.imports.suggestRequires": false,
     "luau-lsp.require.mode": "relativeToFile",
     "luau-lsp.require.directoryAliases": {
-        "@Project": "src/",
         "@DevPackages": "DevPackages/"
     },
     "luau-lsp.ignoreGlobs": [

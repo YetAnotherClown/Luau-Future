@@ -1,4 +1,4 @@
-local utils = require("@Project/utils")
+local utils = require("./utils")
 local prettyPrint = utils.prettyPrint
 
 type ResultType = "Ok" | "Err"
