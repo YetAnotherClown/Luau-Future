@@ -1,7 +1,7 @@
 [package]
 name = "yetanotherclown/luau-futures"
 description = "Rust-like futures for Luau"
-version = "2.0.0-beta.1"
+version = "2.0.0-beta.2"
 license = "MIT"
 authors = ["YetAnotherClown"]
 registry = "https://github.com/UpliftGames/wally-index"

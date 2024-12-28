@@ -1,5 +1,5 @@
 name = "yetanotherclown/luau_futures"
-version = "2.0.0-beta.1"
+version = "2.0.0-beta.2"
 description = "Rust-like futures for Luau"
 authors = ["YetAnotherClown"]
 repository = "https://github.com/YetAnotherClown/luau-futures"
